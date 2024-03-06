@@ -5,6 +5,9 @@ sources:
     schema: gz_raw_data
     tables:
       - name: sales
+        freshness: 
+          warn_after: {count: 90, period: day}
+        loaded_at_field: "CAST(date_date As TIMESTAMP)"
         identifier: raw_gz_sales
         description: sales of greenweez
         columns:
@@ -21,9 +24,7 @@ sources:
         tests:
           - unique:
               column_name : "(orders_id || '-' || pdt_id)"
-        freshness: 
-          warn_after: {count: 90, period: day}
-        loaded_at_field: "CAST(date_date As TIMESTAMP)"
+        
           
 
       - name: product
