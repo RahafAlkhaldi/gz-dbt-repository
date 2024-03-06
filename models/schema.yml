@@ -13,7 +13,7 @@ sources:
         columns:
           - name: date_date
             description: the date of purchas
-          - name: order_id
+          - name: orders_id
             description: foregin key to ship 
           - name: pdt_id  
             description: foreign key to product 
@@ -31,7 +31,7 @@ sources:
         identifier: raw_gz_product
         description: products og greenweez
         columns:
-          - name: product_id 
+          - name: products_id 
             description: primary key
             tests:
               - unique
@@ -43,7 +43,7 @@ sources:
         identifier: raw_gz_ship
         description: ship od greenweez
         columns:
-          - name: order_id
+          - name: orders_id
             tests:
             - unique
             - not_null
@@ -51,7 +51,3 @@ sources:
           - name: shipping _fee 
           - name: log_cost
           - name : ship_cost
-
-     
-          
-      
