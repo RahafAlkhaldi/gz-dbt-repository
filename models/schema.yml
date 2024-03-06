@@ -5,12 +5,15 @@ sources:
     schema: gz_raw_data
     tables:
       - name: sales
+        freshness: 
+          warn_after: {count: 90, period: day}
+        loaded_at_field: "CAST(date_date As TIMESTAMP)"
         identifier: raw_gz_sales
         description: sales of greenweez
         columns:
           - name: date_date
             description: the date of purchas
-          - name: order_id
+          - name: orders_id
             description: foregin key to ship 
           - name: pdt_id  
             description: foreign key to product 
@@ -21,20 +24,18 @@ sources:
         tests:
           - unique:
               column_name : "(orders_id || '-' || pdt_id)"
-        freshness: 
-          warn_after: {count: 90, period: day}
-        loaded_at_field: "CAST(date_date As TIMESTAMP)"
+        
           
 
       - name: product
         identifier: raw_gz_product
         description: products og greenweez
         columns:
-          - name: product_id 
+          - name: products_id 
             description: primary key
             tests:
-              - unique:
-              - not_null:
+              - unique
+              - not_null
           - name: purchase_price
             description: the price of product  
 
@@ -42,15 +43,11 @@ sources:
         identifier: raw_gz_ship
         description: ship od greenweez
         columns:
-          - name: order_id
+          - name: orders_id
             tests:
-            - unique:
-            - not_null:
+            - unique
+            - not_null
                 
           - name: shipping _fee 
           - name: log_cost
           - name : ship_cost
-
-     
-          
-      
