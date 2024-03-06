@@ -49,8 +49,4 @@ sources:
                 
           - name: shipping _fee 
           - name: log_cost
-          - name : ship_cost
-
-     
-          
-      
+          - name : ship_cost    
