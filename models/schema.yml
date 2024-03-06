@@ -31,8 +31,8 @@ sources:
           - name: product_id 
             description: primary key
             tests:
-              - unique:
-              - not_null:
+              - unique
+              - not_null
           - name: purchase_price
             description: the price of product 
            
@@ -46,8 +46,8 @@ sources:
         columns:
           - name: order_id
             tests:
-            - unique:
-            - not_null:
+            - unique
+            - not_null
                 
           - name: shipping _fee 
           - name: log_cost
