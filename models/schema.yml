@@ -21,7 +21,9 @@ sources:
         tests:
           - unique:
               column_name : "(orders_id || '-' || pdt_id)"
-        
+        freshness: 
+          warn_after: {count: 90, period: day}
+        loaded_at_field: "CAST(date_date As TIMESTAMP)"
           
 
       - name: product
@@ -31,14 +33,10 @@ sources:
           - name: product_id 
             description: primary key
             tests:
-              - unique
-              - not_null
+              - unique:
+              - not_null:
           - name: purchase_price
-            description: the price of product 
-           
-        freshness: 
-          warn_after: {count: 90, period: day}
-        loaded_at_field: "CAST(date_date As TIMESTAMP)" 
+            description: the price of product  
 
       - name: ship
         identifier: raw_gz_ship
@@ -46,9 +44,13 @@ sources:
         columns:
           - name: order_id
             tests:
-            - unique
-            - not_null
+            - unique:
+            - not_null:
                 
           - name: shipping _fee 
           - name: log_cost
-          - name : ship_cost    
+          - name : ship_cost
+
+     
+          
+      
