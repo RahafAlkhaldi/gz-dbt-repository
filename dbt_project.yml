@@ -41,6 +41,4 @@ models:
     example:
       +materialized: table
     mart:
-      +materialized: table
-      finance:
-        +schema: finance
+      materialized: table
